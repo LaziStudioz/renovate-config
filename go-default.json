@@ -1,0 +1,25 @@
+{
+  "extends": ["config:base"],
+  "postUpdateOptions": ["gomodTidy"],
+  "docker": {
+    "enabled": false
+  },
+  "docker-compose": {
+    "enabled": false
+  },
+  "labels": ["type: chore"],
+  "prBodyNotes": [
+    "{{#if isMajor}}:warning: MAJOR MAJOR MAJOR :warning:{{/if}}"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^KSGFile(\\.ya?ml)?$"],
+      "matchStrings": [
+        "ksg_version: \"?(?<currentValue>v\\d+(\\.\\d+(\\.\\d+([-\\.][\\w\\.-]+)?)?)?)\"?"
+      ],
+      "depNameTemplate": "KSG",
+      "lookupNameTemplate": "lazistudioz/ksg-cli",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}

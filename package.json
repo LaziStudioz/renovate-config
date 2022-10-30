@@ -1,0 +1,11 @@
+{
+  "name": "lazistudioz-renovate-config",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "renovate-config-validator"
+  },
+  "dependencies": {
+    "renovate": "^19.171.0"
+  },
+  "private": true
+}

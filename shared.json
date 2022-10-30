@@ -1,0 +1,45 @@
+{
+  "extends": ["config:base", "schedule:weekly"],
+  "rangeStrategy": "update-lockfile",
+  "automerge": true,
+  "major": {
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "enabled": false
+  },
+  "rebaseWhen": "conflicted",
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "matchPackagePatterns": ["^@lazistudioz", "^lazistudioz", "^github.com/lazistudioz"],
+      "rangeStrategy": "bump",
+      "schedule": null
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchSourceUrlPrefixes": ["https://github.com/netlify/build"],
+      "groupName": "Netlify packages"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["@lazistudioz/zip-it-and-ship-it"],
+      "groupName": "Netlify packages"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackagePatterns": ["inquirer"],
+      "groupName": "Inquirer packages"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["got"],
+      "allowedVersions": "<11"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["pretty-bytes"],
+      "allowedVersions": "<6"
+    }
+  ]
+}

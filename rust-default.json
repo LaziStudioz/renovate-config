@@ -1,0 +1,60 @@
+{
+  "description": "Shared Renovate configuration for LaziStudioz Rust repositories",
+  "dependencyDashboard": true,
+  "automerge": true,
+  "prCreation": "not-pending",
+  "timezone": "Europe/Paris",
+  "schedule": "after 4am and before 9am every weekday",
+  "lockfileMaintenance": true,
+  "semanticCommitType": "fix",
+  "packageRules": [
+    {
+      "packageNames": ["capnp", "capnpc"],
+      "groupName": "capnp packages"
+    },
+    {
+      "packagePatterns": ["^futures[-_]?"],
+      "groupName": "futures packages"
+    },
+    {
+      "packagePatterns": ["^opentelemetry[-_]?", "^tracing-opentelemetry$"],
+      "groupName": "opentelemetry packages"
+    },
+    {
+      "packagePatterns": ["^prost[-_]?", "^tonic[-_]?"],
+      "groupName": "gRPC-related packages"
+    },
+    {
+      "packagePatterns": ["^rusoto[-_]?"],
+      "groupName": "rusoto packages"
+    },
+    {
+      "packagePatterns": ["^serde[-_]?"],
+      "groupName": "serde packages"
+    },
+    {
+      "packagePatterns": ["^tokio[-_]?"],
+      "groupName": "tokio packages"
+    },
+    {
+      "packagePatterns": ["^tracing[-_]?"],
+      "excludePackageNames": ["tracing-opentelemetry"],
+      "groupName": "tracing packages"
+    },
+    {
+      "matchPackageNames": ["hyper-rustls", "rustls", "rustls-native-certs", "tokio-rustls", "webpki", "webpki-roots"],
+      "groupName": "rustls packages"
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^rust-toolchain(\\.ya?ml)?$"],
+      "matchStrings": [
+        "channel\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+      ],
+      "depNameTemplate": "rust",
+      "lookupNameTemplate": "rust-lang/rust",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}
